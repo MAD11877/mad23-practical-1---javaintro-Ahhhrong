@@ -9,15 +9,16 @@ public class Question2
      * 
      * Hint: in.nextDouble() to read double
      */
+    Scanner in = new Scanner(System.in);
+
     System.out.println("What is your Weight?");
 
-    Scanner in = new Scanner(System.in);
     double weight = in.nextDouble();
     System.out.println("What is your Height?");
 
-    Scanner in = new Scanner(System.in);
     double height = in.nextDouble();
-    System.out.println(weight/(height*height));
+    double result =weight/(height*height);
+    System.out.println(result);
 
   }
 }
