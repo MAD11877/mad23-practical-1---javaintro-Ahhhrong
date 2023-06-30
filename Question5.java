@@ -1,61 +1,35 @@
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Question5
-{
-  public static void main(String[] args)
-  {
-    /**
-     * Prompt the user for number. This input indicates the number of integers the user will be entering next. 
-     * Print out the mode (highest occurrence) from the set of integers. 
-     *    e.g.
-     *     > 5
-     *     > 2
-     *     > 4
-     *     > 1
-     *     > 3
-     *     > 4
-     *     4
-     * 
-     *    e.g.
-     *     > 4
-     *     > 2
-     *     > 2
-     *     > 3
-     *     > 3
-     *     2
-     * Hint: Use a loop to get input. Use another 2 loops to find the mode
-     */
-     
-    Scanner in = new Scanner(System.in);
-    System.out.print("Enter the number of integers you want to enter: ");
-    int numIntegers = input.nextInt();
-
-    // Take numIntegers integers as input
-    int[] integers = new int[numIntegers];
-    for (int i = 0; i < numIntegers; i++) {
-        System.out.print("Enter integer #" + (i + 1) + ": ");
-        integers[i] = input.nextInt();
-        Map<Integer, Integer> frequencyMap = new HashMap<>();
-        for (int i : integers) {
-            if (frequencyMap.containsKey(i)) {
-                frequencyMap.put(i, frequencyMap.get(i) + 1);
-            } else {
-                frequencyMap.put(i, 1);
-            }
-        }
-
+class Question5 {
+    public static void main(String[] args) {
+        List<Integer> integerList = new ArrayList<>(); 
+        Scanner in = new Scanner(System.in);
+        System.out.println();
+        int tries = in.nextInt(); /**number of times user enters number */
+        
+        while (tries > 0) {
+            System.out.println();
+            int num = in.nextInt();
+            integerList.add(num);
+            tries--;
+        }/** number of times to print for user input and storing in list*/
+        
+        int max = 0;
         int mode = 0;
-        int maxFrequency = 0;
-        for (Map.Entry<Integer, Integer> entry : frequencyMap.entrySet()) {
-            int frequency = entry.getValue();
-            if (frequency > maxFrequency) {
-                maxFrequency = frequency;
-                mode = entry.getKey();
+        for (int i = 0; i < integerList.size(); i++) {
+            int count = 0;
+                for (int j = 0; j < integerList.size(); j++) {
+                    if (integerList.get(i) == integerList.get(j)){
+                    count++;
+                    }
+                }
+            if (count >= max){
+                max = count;
+                mode = integerList.get(i);
             }
         }
-
-        // Print out the mode of the integers
-        System.out.println("The mode of the integers is: " + mode);
+        System.out.println(mode);
     }
-  }
 }
